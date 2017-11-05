@@ -1,5 +1,6 @@
 " 行番号を表示
 set number
+nnoremap <silent><C-f> :NERDTreeToggle<CR>
 
 "NeoBundle Scripts-----------------------------
 if &compatible
@@ -7,10 +8,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/home/vagrant/.vim/bundle/neobundle.vim/
+set runtimepath^=/Users/maaya/dotfiles/vimfiles/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('/home/vagrant/.vim/bundle'))
+call neobundle#begin(expand('/Users/maaya/dotfiles/vimfiles'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -22,6 +23,9 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'flazz/vim-colorschemes'
+
+" ファイルをtree表示してくれる
+NeoBundle 'scrooloose/nerdtree'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
