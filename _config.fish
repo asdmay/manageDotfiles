@@ -5,25 +5,23 @@ end
 
 function fish_prompt
   if [ $status -eq 0 ]
-    set status_face (set_color green)"U・x・U < "
+    set status_face (set_color FFE6EB)"U・x・U < "
   else
-    set status_face (set_color blue)"U；x；U < "
+    set status_face (set_color FFE6EB)"U；x；U < "
   end
 
   set prompt (set_color yellow)(prompt_pwd)
 
     echo $prompt
     echo $status_face
-end
 
-function fish_prompt
   test $SSH_TTY
-  and printf (set_color red)$USER(set_color brwhite)'@'(set_color yellow)(prompt_hostname)' '
+  and printf (set_color ECFEFF)$USER(set_color 00B7C2)'@'(set_color 128494)(prompt_hostname)' '
   test $USER = 'root'
-  and echo (set_color red)"#"
+  and echo (set_color E7475E)"#"
 
   # Main
-  echo -n (set_color cyan)(prompt_pwd) (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
+  echo -n (set_color cyan)(prompt_pwd) (set_color ECFEFF)'❯'(set_color 00B7C2)'❯'(set_color 128494)'❯ '
 
   # Git
   set last_status $status
