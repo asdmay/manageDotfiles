@@ -3,6 +3,24 @@ function fish_user_key_bindings
   bind \c] peco_select_ghq_repository
 end
 
+# git
+
+set git_dirty_color E7475E
+set git_not_dirty_color A2EF44
+
+function parse_git_branch
+  set -l branch (git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/\1/')
+  set -l git_diff (git diff)
+
+  if test -n "$git_diff"
+    echo (set_color $git_dirty_color)$branch(set_color normal)
+  else
+    echo (set_color $git_not_dirty_color)$branch(set_color normal)
+  end
+end
+
+# prompt
+
 function fish_prompt
   if [ $status -eq 0 ]
     set status_face (set_color FFE6EB)"U・x・U < "
@@ -10,24 +28,18 @@ function fish_prompt
     set status_face (set_color FFE6EB)"U；x；U < "
   end
 
-  set prompt (set_color yellow)(prompt_pwd)
+   set -l git_dir (git rev-parse --git-dir 2> /dev/null)
+   set prompt (set_color 6A65D8)(prompt_pwd)
 
-    echo $prompt
-    echo $status_face
-
-  test $SSH_TTY
-  and printf (set_color ECFEFF)$USER(set_color 00B7C2)'@'(set_color 128494)(prompt_hostname)' '
-  test $USER = 'root'
-  and echo (set_color E7475E)"#"
-
-  # Main
-  echo -n (set_color cyan)(prompt_pwd) (set_color ECFEFF)'❯'(set_color 00B7C2)'❯'(set_color 128494)'❯ '
-
-  # Git
-  set last_status $status
-  printf '%s ' (__fish_git_prompt)
-  set_color normal
-end
+   if test -n "$git_dir"
+     echo $prompt "[> "(parse_git_branch)
+     echo $status_face
+   else
+     echo $prompt
+     echo $status_face
+   end
+ end
 
 balias g git # キーバインドの下あたりに追記
+balias v vim
 
