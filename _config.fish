@@ -43,3 +43,5 @@ function fish_prompt
 balias g git # キーバインドの下あたりに追記
 balias v vim
 
+
+set PATH /usr/local/bin $PATH
