@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "scss/dollar-variable-pattern": "^foo",
+    "scss/selector-no-redundant-nesting-selector": true
+  }
+  "except": [
+    "first-nested", 
+    "after-comment", 
+    "after-dollar-variable"
+  ]
+}
