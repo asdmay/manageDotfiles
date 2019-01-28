@@ -23,9 +23,9 @@ end
 
 function fish_prompt
   if [ $status -eq 0 ]
-    set status_face (set_color FFE6EB)"U・x・U < "
+    set status_face "U・x・U < "
   else
-    set status_face (set_color FFE6EB)"U；x；U < "
+    set status_face "U；x；U < "
   end
 
    set -l git_dir (git rev-parse --git-dir 2> /dev/null)
@@ -39,9 +39,5 @@ function fish_prompt
      echo $status_face
    end
  end
-
-balias g git # キーバインドの下あたりに追記
-balias v vim
-
 
 set PATH /usr/local/bin $PATH
