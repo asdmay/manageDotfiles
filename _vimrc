@@ -72,6 +72,8 @@ endif
 set backspace=indent,eol,start
 
 " NERDTree
+" なぜかファイル名の頭に^Gとついてしまうのでその対応
+let g:NERDTreeNodeDelimiter = "\u00a0"
 map <C-f> :NERDTreeToggle<CR>
 
 " vim-jsx
@@ -133,3 +135,4 @@ highlight ALEWarning ctermbg=DarkMagenta
 
 filetype plugin indent on
 syntax enable
+
